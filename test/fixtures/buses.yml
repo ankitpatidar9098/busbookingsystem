@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  number: MyString
+  company: MyString
+  price: 1
+  seats: 1
+  route_id: 1
+  starting_city: MyString
+  destination_city: MyString
+  departure_time: 2023-07-19 17:38:49
+
+two:
+  name: MyString
+  number: MyString
+  company: MyString
+  price: 1
+  seats: 1
+  route_id: 1
+  starting_city: MyString
+  destination_city: MyString
+  departure_time: 2023-07-19 17:38:49

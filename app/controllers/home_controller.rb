@@ -6,6 +6,6 @@ class HomeController < ApplicationController
   end
   
   def bus
-   
+   #@buses = Bus.all
   end
 end
