@@ -1,0 +1,36 @@
+<h3>Total Buses (<%= Bus.count %>) </h3>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Bus Number</th>
+      <th>Company</th>
+      <th>Bus Price</th>
+      <th>Seats</th>
+      <th>Route_id</th>
+      <th>Starting_city</th>
+      <th>Destination_city</th>
+      <th>Departure_time</th>
+
+      <th>Actions</th>
+    </tr>
+    <% @buses.each do |bus| %>
+      <tr>
+        <td><%= bus.name %></td>
+        <td><%= bus.number %></td>
+        <td><%= bus.company %></td>
+        <td><%= bus.price %></td>
+        <td><%= bus.seats %></td>
+        <td><%= bus.route_id %></td>
+        <td><%= bus.starting_city %></td>
+        <td><%= bus.destination_city %></td>
+        <td><%= bus.departure_time %></td> 
+        <td>   <%=link_to "Update Bus", edit_bus_path(bus), class:"btn btn-primary"%> 
+          <%= button_to "Delete Bus",'#' ,class:"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+</table >
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <%= will_paginate @buses %>
+  </ul>
+</nav>
