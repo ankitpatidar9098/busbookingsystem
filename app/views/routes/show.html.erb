@@ -1,8 +1,8 @@
 <% if @route.buses.any? %>
   <h3>Total Buses in this Route (<%= @route.buses.count %>) 
-    <%# if current_user.try(:admin?) %>
-      <%= link_to "Add Bus", new_bus_path, class: "btn btn-primary" %>
-    <%# end %>
+  <% if current_user.try(:admin?) %>
+<%=link_to "Add Bus", new_bus_path, class:"btn btn-primary"%>
+<%end%>
   </h3>
   <table class="table table-bordered table-striped">
     <tr>
@@ -20,10 +20,10 @@
         <td><%= bus.company %></td>
         <td><%= bus.price %></td>
         <td><%= bus.seats %></td>
-        <td><button type="button" class="btn btn-danger">Book Now</button></td>
+        <td>  <button type="button" class="btn btn-danger">Book Now</button></td>
       </tr>
     <% end %>
-  <% end %>
+  <%end%>
 </table>
 
 <nav aria-label="Page navigation example">

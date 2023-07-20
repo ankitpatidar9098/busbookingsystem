@@ -1,5 +1,5 @@
 class BusesController < ApplicationController
-   def new
+ def new
     @bus = Bus.new
   end
 
@@ -16,6 +16,6 @@ class BusesController < ApplicationController
   private
 
   def bus_params
-    params.require(:bus).permit(:name, :number, :company, :price, :seats, :route_id)
+    params.require(:bus).permit(:name, :number, :company, :price, :seats, :route_id, :starting_city, :destination_city, :departure_time)
   end
 end

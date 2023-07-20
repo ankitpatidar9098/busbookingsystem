@@ -28,8 +28,10 @@ class RoutesController < ApplicationController
     @buses = @route.buses.paginate(page: params[:page])
   end
 
- 
-  
+  def search
+    @buses = Route.where("from ILIKE ? AND to ILIKE ? AND departure_time::date = ?",
+                         "%#{params[:from]}%", "%#{params[:to]}%", params[:date].to_date)
+  end
 
   private
 
