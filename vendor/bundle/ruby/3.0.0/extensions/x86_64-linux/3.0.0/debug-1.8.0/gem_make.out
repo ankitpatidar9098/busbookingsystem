@@ -1,0 +1,16 @@
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+/home/ankit/.rbenv/versions/3.0.1/bin/ruby -I /home/ankit/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20230720-223684-d6cg8j.rb extconf.rb
+creating Makefile
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= clean
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20230720-223684-87u5b3/debug

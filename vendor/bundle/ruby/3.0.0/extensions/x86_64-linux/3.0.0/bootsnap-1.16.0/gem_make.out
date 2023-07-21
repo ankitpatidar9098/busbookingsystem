@@ -1,0 +1,15 @@
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+/home/ankit/.rbenv/versions/3.0.1/bin/ruby -I /home/ankit/.rbenv/versions/3.0.1/lib/ruby/3.0.0 -r ./siteconf20230720-223684-3ndkp1.rb extconf.rb
+creating Makefile
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/ankit/busbookingsystem/vendor/bundle/ruby/3.0.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20230720-223684-p5tpqx/bootsnap
