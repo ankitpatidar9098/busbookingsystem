@@ -1,4 +1,6 @@
 class Bus < ApplicationRecord
 	belongs_to :route
-    self.per_page = 4
+
+    has_many :tickets, dependent: :destroy
+    self.per_page = 12
 end

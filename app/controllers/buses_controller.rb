@@ -23,13 +23,14 @@ class BusesController < ApplicationController
 
   def update
     @bus = Bus.find(params[:id])
-    if @Bus.update(bus_params)
+    if @bus.update(bus_params)
       flash[:success] = "Bus updated"
       redirect_to root_path
     else
       render "edit"
     end
   end
+
 
   private
 
