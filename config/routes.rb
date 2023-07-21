@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tickets/show'
+  get 'tickets/new'
+  get 'tickets/create'
+  get 'tickets/update'
   #get 'routes/index'
   #get 'routes/new'
   #get 'routes/create'
