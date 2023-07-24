@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get "tickets/user_tickets"
   get 'tickets/show'
-  #get 'tickets/new'
-  #get 'tickets/create'
+  get 'tickets/print'
+  get 'tickets/column/:name',to: 'tickets#print_column'
   #get 'tickets/update'
   #get 'routes/index'
   #get 'routes/new'
