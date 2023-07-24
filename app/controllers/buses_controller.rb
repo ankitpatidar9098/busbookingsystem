@@ -30,6 +30,11 @@ class BusesController < ApplicationController
       render "edit"
     end
   end
+   def destroy
+    Bus.find(params[:id]).destroy
+    flash[:success] = "Bus deleted"
+    redirect_to root_path
+  end
 
 
   private

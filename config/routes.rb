@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'tickets/show'
-  get 'tickets/new'
-  get 'tickets/create'
-  get 'tickets/update'
+  #get 'tickets/new'
+  #get 'tickets/create'
+  #get 'tickets/update'
   #get 'routes/index'
   #get 'routes/new'
   #get 'routes/create'
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   root 'home#index'
   #get 'home/bus'
   get 'routes/index'
+  resources :buses do
+    resources :tickets
+  end
   resources :buses
    resources :routes do
     collection do
@@ -27,9 +30,9 @@ Rails.application.routes.draw do
   end
   
   
-  #get 'home/home'
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
    
   # Defines the root path route ("/")
-  #root "home#index"
+  
 end
