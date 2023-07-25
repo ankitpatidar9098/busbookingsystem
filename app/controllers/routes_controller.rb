@@ -4,6 +4,7 @@ class RoutesController < ApplicationController
   end
 
   def index
+    byebug
     @routes = Route.paginate(page: params[:page])
   end
 
