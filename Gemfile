@@ -36,7 +36,7 @@ gem 'turbolinks'
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
- gem "bcrypt", "~> 3.1.7"
+ #gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
@@ -79,3 +79,10 @@ gem 'htmlbeautifier'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'prawn'
+#to send email
+gem "letter_opener", group: :development
+gem 'pg'
+gem 'cancancan'
+
+gem 'byebug'
+gem 'bootstrap', '~> 5.1.1'
