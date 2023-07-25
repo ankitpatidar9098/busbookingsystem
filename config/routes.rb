@@ -1,29 +1,26 @@
 Rails.application.routes.draw do
-  get "tickets/user_tickets"
-  get 'tickets/show'
-  get 'tickets/print'
-  get 'tickets/column/:name',to: 'tickets#print_column'
-  #get 'tickets/update'
-  #get 'routes/index'
-  #get 'routes/new'
-  #get 'routes/create'
-  #get 'routes/show'
-  #get 'buses/new'
-  #get 'buses/create'
+  
+  
   get 'pages/about_us'
   get 'pages/contact_us'
   get 'pages/privacy_policy'
   get 'pages/term_and_condition'
-  
+   get "my_tickets", to: "users#my_tickets"
+  get "cancelled_tickets", to: "tickets#cancelled_tickets"
   devise_for :users
-  root 'home#index'
+  resources :tickets
+  root "routes#index"
   #get 'home/bus'
-  get 'routes/index'
+  #get 'routes/index'
   resources :buses do
-    resources :tickets
+    resources :tickets do
+       get "approve_ticket"
+      get "reject_ticket"
+      get "cancel_ticket"
+    end
   end
-  resources :buses
-   resources :routes do
+  resources :routes
+   resources :buses do
     collection do
       get 'search'
     end

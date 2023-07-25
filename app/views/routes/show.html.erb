@@ -25,6 +25,7 @@
         <td><%= bus.pickup %></td>
         <td><%= bus.drop %></td>
         <td> <% if current_user.try(:admin?) %>
+          <% if can?(:manage, bus) %>
             <%=link_to "Update Bus", edit_bus_path(bus), class:"btn btn-primary"%>
             <%=link_to "Book Ticket", new_bus_ticket_path(bus), class:"btn btn-danger"%> </td>
         <%else%>
