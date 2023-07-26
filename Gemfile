@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.6"
+gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -28,7 +28,6 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem 'jquery-rails'
 gem 'turbolinks'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -36,7 +35,7 @@ gem 'turbolinks'
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
- #gem "bcrypt", "~> 3.1.7"
+# gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
@@ -45,7 +44,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-gem "sassc-rails"
+# gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -72,16 +71,16 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-gem 'devise'
-gem 'cssbundling-rails'
-gem 'htmlbeautifier'
 
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'prawn'
+#gem 'cssbundling-rails'
+gem 'htmlbeautifier'
+gem "devise" 
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap'
+
 #to send email
 gem "letter_opener", group: :development
-gem 'pg'
+
 gem 'cancancan'
 
 gem 'byebug'
