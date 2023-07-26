@@ -10,41 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_21_105748) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_064831) do
   create_table "buses", force: :cascade do |t|
-    t.string "name"
-    t.string "number"
-    t.string "company"
-    t.integer "price"
-    t.integer "seats"
-    t.integer "route_id"
     t.string "starting_city"
     t.string "destination_city"
     t.datetime "departure_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bustype"
+    t.string "pickup"
+    t.string "drop"
     t.integer "ticket_id"
+    t.datetime "arrival_time"
+    t.string "name"
+    t.string "number"
+    t.integer "price"
+    t.integer "seats"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "from"
     t.string "to"
-    t.string "first_bus"
-    t.string "last_bus"
-    t.integer "bus_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tickets", force: :cascade do |t|
-    t.integer "price"
+  create_table "schedules", force: :cascade do |t|
     t.integer "bus_id"
-    t.integer "user_id"
-    t.integer "age"
-    t.string "name"
-    t.string "sex"
+    t.integer "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dates", default: "--- []\n"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "bus_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "age"
+    t.string "sex"
+    t.integer "status"
+    t.date "date"
+    t.string "cancel_reason"
+    t.datetime "arrival_time"
+    t.datetime "departure_time"
+    t.integer "route_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_21_105748) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.integer "ticket_id"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,0 +1,41 @@
+<div class="card-body">
+  <% if @cancelled_tickets.present? %>
+    <h3>Total Tickets - <%= @cancelled_tickets.count %> </h3>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th>Ticket ID</th>
+            <th>Passenger Name</th>
+            <th>Passenger Age</th>
+            <th>Passenger Sex</th>
+            <th>Bus fare</th>
+            <th>Ticket status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cancelled_tickets.each do |ticket| %>
+            <tr>
+              <td><%= ticket.id %></td>
+              <td><%= ticket.name %></td>
+              <td><%= ticket.age %></td>
+              <td><%= ticket.sex %></td>
+              <td><%= ticket.price %></td>
+              <td><%= ticket.status %></td>
+              <td>
+                <%= link_to "View Details", ticket_path(ticket), class:"btn btn-info btn-sm" %>
+                <%= link_to "Destroy", ticket_path(ticket), data: {turbo_method: :delete,turbo_confirm: "Are you sure to delete this cancelled ticket?" } , class:"btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-grid gap-2 col-2 mx-auto">
+    <%=link_to "Back", root_path ,class:"btn btn-primary"%>
+  </div>
+<%else%>
+  <h1>No cancel tickets </h1>
+<%end%>

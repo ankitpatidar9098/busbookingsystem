@@ -1,39 +1,24 @@
 Rails.application.routes.draw do
-  get "tickets/user_tickets"
-  get 'tickets/show'
-  get 'tickets/print'
-  get 'tickets/column/:name',to: 'tickets#print_column'
-  #get 'tickets/update'
-  #get 'routes/index'
-  #get 'routes/new'
-  #get 'routes/create'
-  #get 'routes/show'
-  #get 'buses/new'
-  #get 'buses/create'
-  get 'pages/about_us'
-  get 'pages/contact_us'
-  get 'pages/privacy_policy'
-  get 'pages/term_and_condition'
-  
+  #get "favicon.ico", to: redirect("/assets/favicon.ico")
+  root "routes#index"
+  get "buses/search"
+  get "buses/all_buses"
+  get "tickets/all_bookings"
+  get "my_tickets", to: "users#my_tickets"
+  get "cancelled_tickets", to: "tickets#cancelled_tickets"
+  post "cancel_bus_ticket/:ticket_id", to: "tickets#cancel_ticket", as: "cancel_bus_ticket"
   devise_for :users
-  root 'home#index'
-  #get 'home/bus'
-  get 'routes/index'
+  resources :tickets
   resources :buses do
-    resources :tickets
-  end
-  resources :buses
-   resources :routes do
-    collection do
-      get 'search'
+    resources :tickets do
+      get "approve_ticket"
+      get "reject_ticket"
+      get "cancel_ticket"
+      get "tickets/send_email"
     end
-
   end
-  
-  
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-   
-  # Defines the root path route ("/")
-  
+  resources :routes do
+    resources :buses
+  end
+  resources :schedules
 end
