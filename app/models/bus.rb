@@ -11,4 +11,6 @@ class Bus < ApplicationRecord
   def display_name
     "#{name}-#{number} "
   end
+
 end
+

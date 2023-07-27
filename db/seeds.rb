@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-for i in 1..5
-    Bus.create(name:"Bus-#{i}",number:"MP 04 #{i+1}43",price:300,seats:30,route_id:21)
+
+for i in 1..10
+     Route.create(from:"city#{i}",to:"city#{i+1}")
+
 end

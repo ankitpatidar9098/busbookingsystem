@@ -1,43 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <%= link_to'ABus',root_path,class: "navbar-brand"%>
-    <!-- <a class="navbar-brand" href="#">HR-Mitra</a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/">ABus</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <% if user_signed_in? %>
-        <% if current_user && current_user.tickets.present? %>
-           <%= link_to "view Bookings" , tickets_show_path ,class:"btn btn-primary"%>
-           <%end%>
-        <li class="nav-item dropdown">
-          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Setting
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="javascript:void(0)">Signed in as <%= current_user.email %></a></li>
-            <li><%= button_to 'sign out',destroy_user_session_path,class:'dropdown-item',method: :delete,data:{confirm: 'If you logout,your current session will be destroyed.are you sure you want to logout?'} %></li>
-          </ul>
-        </li>
-        <% else %>
-             <li class="nav-item">
-              <%= link_to "Sign In",new_user_session_path,class:'nav-link active'%></li>
-        <% end %>
-       
+        <% if current_user.try(:admin?) %>
+          <li class="nav-item">
+            <%=link_to "Add Bus", new_bus_path, class:"nav-link active"%>
+          </li>
+          <li class="nav-item">
+            <%=link_to "Add Route", new_route_path, class:"nav-link active"%>
+          </li>
+          <li class="nav-item">
+            <%=link_to " Add Schedule", new_schedule_path, class:"nav-link active"%>
+          </li>
+          <li class="nav-item">
+            <%=link_to "View Schedules", schedules_path, class:"nav-link active"%>
+          </li>
+          <li class="nav-item">
+            <%=link_to "View All Buses",buses_all_buses_path, class:"nav-link active"%>
+          </li>
+        <%else%>
+        <%end%>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">'Google Search</button>
-        
-      </form>
+      <div class="d-flex" role="search">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <%if user_signed_in?%>
+            <% if current_user.try(:admin?) %>
+              <%# if can?(:manage, ticket) %>
+              <%= link_to 'All Bookings', tickets_all_bookings_path, class:"btn btn-info"%>
+              <%= link_to 'Cancel Tickets', cancelled_tickets_path, class:"btn btn-info"%>
+              <%= button_to "Sign out" , destroy_user_session_path, method: :delete ,class:"btn btn-primary"%>
+            <%else%>
+              <%= link_to 'My Tickets',my_tickets_path(@user) ,class:"btn btn-primary"%>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profile
+                </button>
+                <ul class="dropdown-menu dropdown-menu-primary">
+                  <li class="dropdown-item"> <%= " welcome "%></li>
+                  <li class="dropdown-item"> <%=current_user.name%></li>
+                  <li class="dropdown-item"><%=current_user.email%></li>
+                  <li class="dropdown-item "><%=link_to "Update Profile",edit_user_registration_path,class:"btn btn-outline-primary"%></li>
+                 <li class="dropdown-item "><%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete ,class:"btn btn-outline-primary"%></li>
+                </ul>
+              </div>
+              <%= button_to "Sign out" , destroy_user_session_path, method: :delete ,class:"btn btn-primary"%>
+            <%end%>
+          <%else%>
+            <%= button_to "Sign in" , new_user_session_path, class:"btn btn-primary" %>
+            <%= link_to "Sign up" , new_user_registration_path ,class:"btn btn-primary"%>
+          <%end%>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
