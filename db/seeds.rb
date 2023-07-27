@@ -8,5 +8,4 @@
 
 for i in 1..10
      Route.create(from:"city#{i}",to:"city#{i+1}")
-
 end
