@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
+
   authorize_resource
+
 
   def index
     @bus = Bus.find(params[:bus_id])
@@ -56,6 +58,8 @@ class TicketsController < ApplicationController
   end
 
   def approve_ticket
+
+
     @ticket = Ticket.find(params[:ticket_id])
     if @ticket.status != "Confirmed" && @ticket.update(status: :Confirmed)
       bus = Bus.find(@ticket.bus.id)
@@ -66,6 +70,7 @@ class TicketsController < ApplicationController
       TicketMailer.send_email(@ticket).deliver_now
     else
       redirect_to request.referrer, notice: "Ticket already Confirmed"
+
     end
   end
 

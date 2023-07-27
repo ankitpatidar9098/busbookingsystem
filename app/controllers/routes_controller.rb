@@ -6,6 +6,7 @@ class RoutesController < ApplicationController
   end
 
   def index
+    
     @routes = Route.paginate(page: params[:page])
   end
 

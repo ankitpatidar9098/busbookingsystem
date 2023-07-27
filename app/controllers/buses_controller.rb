@@ -1,22 +1,32 @@
 class BusesController < ApplicationController
   authorize_resource
+
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
+
 
   def index
     @route = Route.find(params[:route_id])
     @buses = @route.buses.paginate(page: params[:page])
   end
 
+
   def all_buses
     @buses = Bus.paginate(page: params[:page])
-  end
 
+  end
   def new
     @bus = Bus.new
   end
 
   def create
     @bus = Bus.new(bus_params)
+     dates = params[:bus][:dates]
+    if dates.present?
+      @bus.dates = dates.reject(&:empty?).map(&:strip).join(", ")
+    else
+      @bus.dates = []
+    end
+
     if @bus.save
       flash[:alert] = "Bus Added successfully"
       redirect_to root_path
@@ -41,6 +51,7 @@ class BusesController < ApplicationController
 
   def destroy
     Bus.find(params[:id]).destroy
+
     flash[:alert] = "Bus deleted"
     redirect_to request.referrer
   end
@@ -59,9 +70,12 @@ class BusesController < ApplicationController
     end
   end
 
+
   private
 
   def bus_params
     params.require(:bus).permit(:starting_city, :destination_city, :name, :number, :bustype, :price, :seats, :drop, :pickup, :departure_time, :arrival_time)
   end
+
 end
+

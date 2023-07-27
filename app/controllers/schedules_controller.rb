@@ -51,3 +51,4 @@ class SchedulesController < ApplicationController
     params.require(:schedule).permit(:route_id, :bus_id, dates: [])
   end
 end
+

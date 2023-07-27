@@ -1,4 +1,6 @@
+
  <%if user_signed_in?%>
+
   <div class="container">
     <div class="card text-center">
       <div class="card-header">
@@ -97,11 +99,15 @@
     </div>
     <div class="d-flex justify-content-center justify-content-md-end mt-3">
       <div class="d-grid gap-2 d-md-block">
+
         <%=link_to "Download as PDF",'#',class:"btn btn-primary mr-md-2",onclick: "window.print()"%>
+
         <%=link_to "Back", :back ,class:"btn btn-primary"%>
       </div>
     </div>
   </div>
 <%else%>
   <h1>Please Sign up or Sign in</h1>
+
 <%end%>
+
