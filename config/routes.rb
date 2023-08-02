@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "buses/search"
   get "buses/all_buses"
   get 'tickets/:id/print', to: 'tickets#print', as: :print_ticket, formats: :pdf
-
   get "tickets/all_bookings"
   get "my_tickets", to: "users#my_tickets"
   get "cancelled_tickets", to: "tickets#cancelled_tickets"

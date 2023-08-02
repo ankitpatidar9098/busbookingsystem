@@ -80,8 +80,9 @@ gem 'will_paginate-bootstrap'
 
 #to send email
 gem "letter_opener", group: :development
-gem 'pg'
+
 gem 'cancancan'
 
 gem 'byebug'
 gem 'bootstrap', '~> 5.1.1'
+gem 'prawn'

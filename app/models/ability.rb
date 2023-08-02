@@ -13,9 +13,11 @@ class Ability
       can :manage, Schedule
       can :manage, :cancelled_tickets 
     else
+
       can [:read, :search], Bus
       can :read, Route
       can [:read, :create, :cancel_ticket], Ticket
+      can :print, Ticket
       can :read, :my_tickets
       can :cancel_ticket, :my_tickets
     end

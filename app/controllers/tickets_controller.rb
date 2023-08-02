@@ -1,3 +1,5 @@
+require 'prawn'
+
 class TicketsController < ApplicationController
   authorize_resource
 
@@ -118,7 +120,67 @@ class TicketsController < ApplicationController
 end
 
 
-  def update
+def print
+  require 'prawn'
+
+  @ticket = Ticket.find(params[:id])
+
+  # Create a new PDF document
+  pdf = Prawn::Document.new
+
+  # Add content to the PDF
+  pdf.text "Welcome to #{@ticket.bus.name}"
+  pdf.move_down 10
+
+  # Show the ticket status based on conditions
+  if @ticket.Confirmed?
+    pdf.text "Confirmed Ticket", size: 18, color: "00AA00"
+  elsif @ticket.Rejected?
+    pdf.text "Ticket Not Confirmed", size: 18, color: "FF0000"
+  elsif @ticket.Cancelled?
+    pdf.text "Cancelled", size: 18, color: "FF0000"
+  else
+    pdf.text "Ticket Not Confirmed yet - Status pending, please wait...", size: 18, color: "FF0000"
+  end
+  pdf.move_down 20
+
+  # Add ticket information to the PDF
+  pdf.text "Ticket Information", size: 20, style: :bold
+  pdf.move_down 10
+
+     pdf.text "Ticket ID: #{@ticket.id}"
+     pdf.text "Bus ID: #{@ticket.bus_id}"
+     pdf.text " Bus Route: #{@ticket.route.from} to #{@ticket.route.to}"
+     pdf.text " Passenger Name: #{@ticket.name}"
+     pdf.text "Passenger Age: #{@ticket.age}"
+     pdf.text "Bus Far: #{@ticket.price}"
+     pdf.text "Pickup Point: #{@ticket.bus.pickup}"
+     pdf.text "Drop Point: #{@ticket.bus.drop}"
+     pdf.text "Journey Date: #{@ticket.date}"
+     pdf.text "Bus Departure Time: #{@ticket.bus.departure_time.strftime("%H:%M")}"
+     pdf.text "Bus Arrival Time: #{@ticket.bus.arrival_time.strftime("%H:%M")}"
+     pdf.text "Ticket Created At: #{@ticket.created_at}"
+     pdf.text "Ticket Updated At: #{@ticket.updated_at}"
+     pdf.text "Ticket Status: #{@ticket.status}" 
+  # Add cancel reasons if the ticket is cancelled
+  if @ticket.Cancelled?
+    pdf.move_down 10
+    pdf.text "Cancel Reasons:", size: 16, style: :bold
+    pdf.move_down 5
+    pdf.text @ticket.cancel_reason
+  end
+
+  # Add footer with current date and time
+  pdf.move_down 20
+  time = Time.now.to_s
+  time = DateTime.parse(time).strftime("%d/%m/%Y  %H:%M")
+  pdf.text "Generated on: #{time}", align: :center
+
+  # Save or send the PDF as a response to the user's browser
+  send_data pdf.render, filename: "ticket.pdf", type: "application/pdf"
+end
+
+ def update
     @ticket = Ticket.find(params[:id])
     if @ticket.update(ticket_params)
       flash[:alert] = "detaills updated"
