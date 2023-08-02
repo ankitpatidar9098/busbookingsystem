@@ -6,7 +6,7 @@
     <%= f.label :bus_id, "Select a Bus" %>
     <%= f.collection_select :bus_id, Bus.all, :id, :display_name %><br>
     <br>
-    <%= f.label :dates, "Dates (select multiple)" %>
+    <%= f.label :dates, "Dates" %>
     <%= f.select :dates, options_for_select((Date.today..2.weeks.from_now).map{ |date| [date.to_s, date.to_s] }), {}, multiple: true , class: 'form-control' , required: true %><br>
     <div id="selected-dates"></div>
     <%= f.submit "Save Schedule", class: "btn btn-primary" %>
