@@ -19,5 +19,7 @@ module Abus
     # config.eager_load_paths << Rails.root.join("extras")
     ENV['RACK_ENV'] = 'deployment'
     port = ENV.fetch('PORT', 3000)
+    config.middleware.use Warden::Manager
+
   end
 end

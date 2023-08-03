@@ -9,3 +9,6 @@
 for i in 1..10
      Route.create(from:"city#{i}",to:"city#{i+1}")
 end
+if Rails.env.development?
+	AdminUser.create!(email: 'ankittt@gmail.com', password: 'password', password_confirmation: 'password')
+end
