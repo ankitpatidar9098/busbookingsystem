@@ -1,6 +1,6 @@
 class BusesController < ApplicationController
-  authorize_resource
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+    authorize_resource
+    before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
     @route = Route.find(params[:route_id])

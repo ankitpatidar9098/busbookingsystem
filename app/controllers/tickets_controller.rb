@@ -84,22 +84,6 @@ class TicketsController < ApplicationController
 
 
 
-    # ["Bus ID:", @ticket.bus_id],
-    # ["Bus Route:", "#{@ticket.route.from} to #{@ticket.route.to}"],
-    # ["Passenger Name:", ],
-    # ["Passenger Age:", @ticket.age],
-    # ["Passenger Sex:", @ticket.sex],
-    # ["Bus Fare:", @ticket.price],
-    # ["Pickup Point:", @ticket.bus.pickup],
-    # ["Drop Point:", @ticket.bus.drop],
-    # ["Journey Date:", @ticket.date],
-    # ["Bus Departure Time:", @ticket.bus.departure_time.strftime("%H:%M")],
-    # ["Bus Arrival Time:", @ticket.bus.arrival_time.strftime("%H:%M")],
-    # ["Ticket Created At:", @ticket.created_at],
-    # ["Ticket Updated At:", @ticket.updated_at],
-    # ["Ticket Status:", @ticket.status]
-  
-
   
   # Add cancel reasons if the ticket is cancelled
   if @ticket.Cancelled?

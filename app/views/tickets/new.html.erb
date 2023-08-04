@@ -8,8 +8,8 @@
     <%= f.text_field :age, class: 'form-control', required: true%><br>
     <%= f.label :sex,"Enter Passenger Sex "%>
     <%= f.select :sex,  ['Male', 'Female', 'Other'], class: 'form-control', required: true%>
-    <%= f.label :date, "Journey date" %>
-    <%= f.date_field :date, value: params[:date] ,readOnly: true%>
+    <%#= f.label :date, "Journey date" %>
+    <%#= f.date_field :date, value: params[:date] ,readOnly: true%>
     <%= f.hidden_field :price, value: @bus.price %>
     <%= f.hidden_field :route_id, value: @schedule.route.id %>
     <%= f.hidden_field :bus_id, value: @bus.id %>
